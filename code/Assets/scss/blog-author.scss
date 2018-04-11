@@ -1,0 +1,15 @@
+.blog-author {
+    display: flex;
+    border-top: 1px solid color(border);
+    @include padding(top, medium);
+}
+
+.blog-author__image {
+    max-width: 150px;
+    @include margin(right, medium);
+}
+
+.blog-author__name {
+    @include h3
+}
+

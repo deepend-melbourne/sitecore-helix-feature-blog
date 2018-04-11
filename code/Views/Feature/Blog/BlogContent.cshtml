@@ -1,0 +1,33 @@
+@using Sitecore.Foundation.Grid.Extensions
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sitecore.Feature.Blog.ViewModels.IBlogContent>
+
+@{
+    var parameters = GetRenderingParameters<Sitecore.Foundation.Grid.Models.IRenderingParameters_Spacing>();
+
+    var imageClass = Model.BlogImage != null ? "panel__top-image" : "";
+}
+
+<div class="@Html.SpacingClasses(parameters)">
+    <div class="panel panel--rounded-corners">
+
+        <div class="panel__top">
+            @Editable(u => u.BlogImage, new { @class= imageClass })
+        </div>
+
+        <div class="panel__content">
+            <div class="blog-content__header">
+                <div class="blog-content__date">@Editable(u => u.BlogDate, x => x.BlogDate.ToString("MMM d, yyyy"))</div>
+                <h1 class="title title--h2 title--center title--underline">@Editable(u => u.BlogTitle)</h1>
+            </div>
+            <div class="introduction">
+                <div class="introduction__text">
+                    @Editable(u => u.BlogIntroduction)
+                </div>
+            </div>
+            <div>
+                @Editable(u => u.BlogBody)
+            </div>
+            @Html.Sitecore().DynamicPlaceholder("blog-content")
+        </div>
+    </div>
+</div>

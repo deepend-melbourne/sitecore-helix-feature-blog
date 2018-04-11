@@ -1,0 +1,100 @@
+@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Feature.Blog.Models
+@using System.Collections.Generic
+@using Sitecore.Foundation.Grid.Models
+@using Sitecore.Foundation.Alerts.Models
+@using Sitecore.Foundation.Alerts.Extensions
+@using System.Linq
+
+@inherits GlassView<IEnumerable<IBlogArticle>>
+
+@if (!Model.Any() && Sitecore.Context.PageMode.IsExperienceEditor)
+{
+    var warningModel = new RenderingAlertModel()
+    {
+        Title = "Blog Listing (No articles)",
+        Description = "There are no articles to display. When you view this rendering in the experience editor, outside the context of a site, no articles will display. This message will not display when viewed normally."
+    };
+    <div class="grid-container">
+
+        <div class="grid-x grid-padding-x">
+            <div class="cell">
+                @Html.ShowRenderingAlert(warningModel)
+            </div>
+        </div>
+    </div>
+
+    return;
+}
+
+<div class="grid-container">
+
+    @{
+        IBlogArticle firstBlog = Model.FirstOrDefault();
+        var articles = Model.Where(u => u.Id != firstBlog?.Id);
+    }
+
+    <div class="grid-x grid-padding-x">
+
+        @if (firstBlog != null)
+        {
+            <div class="cell small-12">
+                <div class="news-tile margin-top--medium margin-bottom--medium">
+                    <a href="#">
+                        <div class="news-tile__image" style="background-image: url(@(firstBlog.BlogImage?.Src));">
+                        </div>
+                        <div class="news-tile__content">
+                            <p class="news-tile__date">
+                                @firstBlog.BlogDate.ToString("MMMM dd, yyyy")
+                            </p>
+                            <p class="news-tile__title">
+                                @firstBlog.BlogTitle
+                            </p>
+                            <p class="news-tile__description">
+                                @firstBlog.BlogIntroduction
+                            </p>
+                            <p class="news-tile__more">
+                                Read more
+                            </p><p>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+
+        @foreach (var blog in articles)
+        {
+            if (blog == null)
+            {
+                continue;
+            }
+
+            <div class="cell small-12 medium-6">
+                <div class="margin-top--medium margin-bottom--medium">
+                    <div class="news-tile">
+                        <a href="@blog.Url">
+                            <div class="news-tile__image" style="background-image: url(@(blog.BlogImage?.Src));">
+                            </div>
+                            <div class="news-tile__content">
+                                <p class="news-tile__date">
+                                    @blog.BlogDate.ToString("MMMM dd, yyyy")
+                                </p>
+                                <p class="news-tile__title">
+                                    @blog.BlogTitle
+                                </p>
+                                <p class="news-tile__description">
+                                    @blog.BlogIntroduction
+                                </p>
+                                <p class="news-tile__more">
+                                    Read more
+                                </p><p>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

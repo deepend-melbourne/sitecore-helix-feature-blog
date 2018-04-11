@@ -1,0 +1,25 @@
+.related-posts__lists {
+    list-style: none;
+    padding:0;
+}
+
+.related-post__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.related-post__date {
+    @include smalltext;
+}
+
+.related-post {
+    @include margin(bottom, medium);
+    @include padding(bottom, medium);
+    border-bottom: 1px solid color(border);
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}

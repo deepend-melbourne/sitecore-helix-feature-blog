@@ -1,0 +1,12 @@
+@using Sitecore.Foundation.Grid.Extensions
+@using Sitecore.Foundation.Grid.Models
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sitecore.Feature.Blog.ViewModels.IBlogListingContent>
+
+@{
+    var parameters = GetRenderingParameters<IRenderingParameters_Spacing>();
+}
+
+<div class="@Html.SpacingClasses(parameters)">
+    <h1 class="title--h2 title--strike">@Editable(u => u.PageTitle)</h1>
+    @Html.Sitecore().DynamicPlaceholder("blog-listing-content")
+</div>

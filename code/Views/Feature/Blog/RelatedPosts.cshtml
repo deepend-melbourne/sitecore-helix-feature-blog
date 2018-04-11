@@ -1,0 +1,26 @@
+@using Sitecore.Foundation.Grid.Extensions
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sitecore.Mvc.Presentation.RenderingModel>
+
+@{
+    var parameters = GetRenderingParameters<Sitecore.Foundation.Grid.Models.IRenderingParameters_Spacing>();
+}
+
+<div class="@Html.SpacingClasses(parameters)">
+    <div class="related-posts">
+        <h2 class="title--h3 title--normal-font margin-bottom--medium">Related Posts</h2>
+        <ul class="related-posts__list">
+            <li class="related-post">
+                <a class="related-post__link" href="#">Scenic Announces Double Eclipse for 2020</a>
+                <span class="related-post__date">February 2, 2018</span>
+            </li>
+            <li class="related-post">
+                <a class="related-post__link" href="#">Special offers for 2019 Europe River Cruises</a>
+                <span class="related-post__date">January 29, 2018</span>
+            </li>
+            <li class="related-post">
+                <a class="related-post__link" href="#">New Information Sessions for 2018</a>
+                <span class="related-post__date">January 29, 2018</span>
+            </li>
+        </ul>
+    </div>
+</div>

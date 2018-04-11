@@ -1,0 +1,33 @@
+@using Sitecore.Foundation.Grid.Extensions
+@using Sitecore.Foundation.Alerts.Extensions
+@using Sitecore.Foundation.Models.Extensions
+@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Feature.Blog.Models
+@using Sitecore.Feature.Blog
+@using Sitecore.Foundation.Grid.Models
+
+@inherits GlassView<IBlogAuthor>
+
+@{
+    var parameters = GetRenderingParameters<IRenderingParameters_Spacing>();
+}
+
+@if (!Model.IsDerived(Templates.BlogAuthor.ID))
+{
+    @Html.ShowRenderingAlert("Blog Author")
+    return;
+}
+
+<div class="@Html.SpacingClasses(parameters)">
+    <div class="blog-author">
+        <div>
+            @Editable(x => x.BlogAuthorPhoto, new { @class = "blog-author__image" })
+        </div>
+        <div>
+            <div class="blog-author__name">@Editable(x => x.BlogAuthorName)</div>
+            <div class="blog-author__bio">
+                @Editable(x => x.BlogAuthorBio)
+            </div>
+        </div>
+    </div>
+</div>
