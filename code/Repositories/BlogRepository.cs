@@ -1,10 +1,10 @@
-using Sitecore.Data.Items;
-using Sitecore.Foundation.Indexing.Repositories;
 using System;
 using System.Collections.Generic;
-using Sitecore.Foundation.SitecoreExtensions.Extensions;
-using Sitecore.Foundation.Indexing.Models;
 using System.Linq;
+using Sitecore.Data.Items;
+using Sitecore.Foundation.Indexing.Models;
+using Sitecore.Foundation.Indexing.Repositories;
+using Sitecore.Foundation.SitecoreExtensions.Extensions;
 
 namespace Sitecore.Feature.Blog.Repositories
 {
@@ -21,8 +21,9 @@ namespace Sitecore.Feature.Blog.Repositories
         {
             if (contextItem == null)
             {
-                    throw new ArgumentNullException(nameof(contextItem));
+                throw new ArgumentNullException(nameof(contextItem));
             }
+
             if (!contextItem.IsDerived(Templates.BlogFolder.ID))
             {
                 throw new ArgumentException($"Item must derive from {nameof(Templates.BlogFolder)}", nameof(contextItem));
@@ -35,14 +36,15 @@ namespace Sitecore.Feature.Blog.Repositories
 
             searchService.Settings.Root = contextItem;
 
-            //TODO: Refactor for scalability
+            // TODO: Refactor for scalability
             var results = searchService.FindAll();
+
             return results.Results.Select(x => x.Item).Where(x => x != null).OrderByDescending(i => i[Templates.BlogArticle.Fields.Date]);
         }
 
         public IEnumerable<Item> GetLatest(Item contextItem, int skip, int take)
         {
-            //TODO: Refactor for scalability
+            // TODO: Refactor for scalability
             return this.Get(contextItem).Skip(skip).Take(take);
         }
     }

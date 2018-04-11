@@ -1,5 +1,5 @@
-using Glass.Mapper.Sc.Fields;
 using Glass.Mapper.Sc.Configuration.Attributes;
+using Glass.Mapper.Sc.Fields;
 using Sitecore.Foundation.Models.Models.Interfaces;
 
 namespace Sitecore.Feature.Blog.Models
@@ -8,7 +8,9 @@ namespace Sitecore.Feature.Blog.Models
     public interface IBlogAuthor : IBaseItem
     {
         string BlogAuthorName { get; set; }
+
         Image BlogAuthorPhoto { get; set; }
+
         string BlogAuthorBio { get; set; }
     }
 }
