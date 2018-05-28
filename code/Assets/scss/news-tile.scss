@@ -33,7 +33,7 @@
 .news-tile__content {
     flex: 0 0 100%;
     background: theme(tiles, background);
-    padding: size(gutter);
+    padding: gutter(default);
     border: 1px solid color(border);
     border-left: 0;
 

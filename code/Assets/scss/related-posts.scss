@@ -15,8 +15,8 @@
 }
 
 .related-post {
-    @include margin(bottom, medium);
-    @include padding(bottom, medium);
+    @include margin(bottom, default);
+    @include padding(bottom, default);
     border-bottom: 1px solid color(border);
 
     &:last-child {

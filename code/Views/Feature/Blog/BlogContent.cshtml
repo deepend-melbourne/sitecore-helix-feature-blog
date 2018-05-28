@@ -11,7 +11,7 @@
     <div class="panel panel--rounded-corners">
 
         <div class="panel__top">
-            @Editable(u => u.BlogImage, new { @class= imageClass })
+            @Editable(u => u.BlogImage, new { @class = imageClass })
         </div>
 
         <div class="panel__content">
@@ -27,7 +27,24 @@
             <div>
                 @Editable(u => u.BlogBody)
             </div>
+            @if (Model.Tags != null && Model.Tags.Any())
+            {
+                var lastTag = Model.Tags.LastOrDefault();
+                <div class="margin-top--large">
+                    <strong>Tags: </strong>
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <a href="/news?tags=@tag.Name">@tag.Name</a>
+                        if (tag != lastTag)
+                        {
+                            <span>,</span>
+                        }
+                    }
+                </div>
+            }
             @Html.Sitecore().DynamicPlaceholder("blog-content")
+
+            
         </div>
     </div>
 </div>

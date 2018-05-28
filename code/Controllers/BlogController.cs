@@ -1,31 +1,39 @@
 using System.Linq;
 using System.Web.Mvc;
 using Glass.Mapper.Sc.Web.Mvc;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Feature.Blog.Models;
-using Sitecore.Feature.Blog.Repositories;
+using Sitecore.Feature.Blog.Services;
 using Sitecore.Foundation.Models.Services;
 using Sitecore.Foundation.SitecoreExtensions.Extensions;
+using Sitecore.Foundation.Tags.Search;
 
 namespace Sitecore.Feature.Blog.Controllers
 {
     public class BlogController : GlassController
     {
-        private IBlogRepository _blogRepository;
+        private readonly BlogArticleSearchService blogArticleService;
+        private readonly TagSearchService tagSearchService;
 
-        public BlogController(IBlogRepository blogRepository)
+        public BlogController(BlogArticleSearchService blogArticleService, TagSearchService tagSearchService)
         {
-            _blogRepository = blogRepository;
+            this.blogArticleService = blogArticleService;
+            this.tagSearchService = tagSearchService;
         }
 
         public ActionResult BlogListing()
         {
-            var datasource = GetLayoutItem<Item>();
+            var request = new BlogArticleSearchRequest()
+            {
+                RootPath = Context.Site.RootPath,
+                PageSize = 10 // hard code to 10 for now
+            };
 
-            var blogItems = _blogRepository.Get(datasource)
-                .Select(ent => ent.As<IBlogArticle>());
+            ApplyUrlQueryTagsToBlogSearchRequest(request);
 
-            return View("~/Views/Feature/Blog/BlogListing.cshtml", blogItems);
+            var searchResult = blogArticleService.Search(request);
+            return View("~/Views/Feature/Blog/BlogListing.cshtml", searchResult);
         }
 
         public ActionResult BlogAuthor()
@@ -44,6 +52,33 @@ namespace Sitecore.Feature.Blog.Controllers
             }
 
             return View("~/Views/Feature/Blog/BlogAuthor.cshtml", author);
+        }
+
+        void ApplyUrlQueryTagsToBlogSearchRequest(BlogArticleSearchRequest request)
+        {
+            var tagQueryString = Request.QueryString["tags"];
+            if (string.IsNullOrEmpty(tagQueryString))
+            {
+                return;
+            }
+
+            var urlQueryTags = tagQueryString.Split(',');
+
+            if (urlQueryTags != null && urlQueryTags.Any())
+            {
+                var tagSearchRequest = new TagSearchRequest
+                {
+                    RootPath = Context.Site.RootPath,
+                    TagNames = urlQueryTags
+                };
+
+                var tags = tagSearchService.Search(tagSearchRequest);
+
+                if (tags.Results.Any())
+                {
+                    request.TagIds = tags.Results.Select(u => new ID(u.Id)).ToArray();
+                }
+            }
         }
     }
 }

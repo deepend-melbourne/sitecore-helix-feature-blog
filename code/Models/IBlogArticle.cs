@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Glass.Mapper.Sc.Configuration;
 using Glass.Mapper.Sc.Configuration.Attributes;
 using Glass.Mapper.Sc.Fields;
 using Sitecore.Foundation.Models.Models.Interfaces;
+using Sitecore.Foundation.Tags.Model;
 
 namespace Sitecore.Feature.Blog.Models
 {
@@ -18,6 +20,8 @@ namespace Sitecore.Feature.Blog.Models
         string BlogBody { get; set; }
 
         Image BlogImage { get; set; }
+
+        IEnumerable<ITag> Tags { get; set; }
 
         [SitecoreField(Setting = SitecoreFieldSettings.InferType)]
         IBlogAuthor BlogAuthor { get; set; }

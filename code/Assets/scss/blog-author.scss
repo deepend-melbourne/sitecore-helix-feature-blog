@@ -1,12 +1,12 @@
 .blog-author {
-    display: flex;
-    border-top: 1px solid color(border);
-    @include padding(top, medium);
+  display: flex;
+  border-top: 1px solid color(border);
+  @include padding(top, default);
 }
 
 .blog-author__image {
     max-width: 150px;
-    @include margin(right, medium);
+    @include margin(right, default);
 }
 
 .blog-author__name {

@@ -4,11 +4,13 @@
 @using Sitecore.Foundation.Grid.Models
 @using Sitecore.Foundation.Alerts.Models
 @using Sitecore.Foundation.Alerts.Extensions
+@using Sitecore.Foundation.Indexing.Search
+@using Sitecore.Feature.Navigation.ViewModels
 @using System.Linq
 
-@inherits GlassView<IEnumerable<IBlogArticle>>
+@inherits GlassView<SearchResponse<IBlogArticle>>
 
-@if (!Model.Any() && Sitecore.Context.PageMode.IsExperienceEditor)
+@if (!Model.Results.Any() && Sitecore.Context.PageMode.IsExperienceEditor)
 {
     var warningModel = new RenderingAlertModel()
     {
@@ -30,8 +32,8 @@
 <div class="grid-container">
 
     @{
-        IBlogArticle firstBlog = Model.FirstOrDefault();
-        var articles = Model.Where(u => u.Id != firstBlog?.Id);
+        IBlogArticle firstBlog = Model.Results.FirstOrDefault();
+        var articles = Model.Results.Where(u => u.Id != firstBlog?.Id);
     }
 
     <div class="grid-x grid-padding-x">
@@ -39,8 +41,8 @@
         @if (firstBlog != null)
         {
             <div class="cell small-12">
-                <div class="news-tile margin-top--medium margin-bottom--medium">
-                    <a href="#">
+                <div class="news-tile margin-top--default margin-bottom--default">
+                    <a href="@firstBlog.Url">
                         <div class="news-tile__image" style="background-image: url(@(firstBlog.BlogImage?.Src));">
                         </div>
                         <div class="news-tile__content">
@@ -71,7 +73,7 @@
             }
 
             <div class="cell small-12 medium-6">
-                <div class="margin-top--medium margin-bottom--medium">
+                <div class="margin-top--default margin-bottom--default">
                     <div class="news-tile">
                         <a href="@blog.Url">
                             <div class="news-tile__image" style="background-image: url(@(blog.BlogImage?.Src));">
@@ -96,5 +98,13 @@
                 </div>
             </div>
         }
+
+
+
     </div>
+    @Html.Partial("~/Views/Feature/Navigation/Pagination.cshtml", new PaginationViewModel
+       {
+           CurrentPage = Model.Page,
+           TotalPages = Model.TotalPages
+       })
 </div>
