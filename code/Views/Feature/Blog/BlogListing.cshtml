@@ -4,7 +4,7 @@
 @using Sitecore.Foundation.Grid.Models
 @using Sitecore.Foundation.Alerts.Models
 @using Sitecore.Foundation.Alerts.Extensions
-@using Sitecore.Foundation.Indexing.Search
+@using Sitecore.Foundation.Indexing.Search.Models
 @using Sitecore.Feature.Navigation.ViewModels
 @using System.Linq
 
@@ -31,41 +31,10 @@
 
 <div class="grid-container">
 
-    @{
-        IBlogArticle firstBlog = Model.Results.FirstOrDefault();
-        var articles = Model.Results.Where(u => u.Id != firstBlog?.Id);
-    }
-
     <div class="grid-x grid-padding-x">
 
-        @if (firstBlog != null)
-        {
-            <div class="cell small-12">
-                <div class="news-tile margin-top--default margin-bottom--default">
-                    <a href="@firstBlog.Url">
-                        <div class="news-tile__image" style="background-image: url(@(firstBlog.BlogImage?.Src));">
-                        </div>
-                        <div class="news-tile__content">
-                            <p class="news-tile__date">
-                                @firstBlog.BlogDate.ToString("MMMM dd, yyyy")
-                            </p>
-                            <p class="news-tile__title">
-                                @firstBlog.BlogTitle
-                            </p>
-                            <p class="news-tile__description">
-                                @firstBlog.BlogIntroduction
-                            </p>
-                            <p class="news-tile__more">
-                                Read more
-                            </p><p>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        }
 
-        @foreach (var blog in articles)
+        @foreach (var blog in Model.Results)
         {
             if (blog == null)
             {
@@ -103,8 +72,8 @@
 
     </div>
     @Html.Partial("~/Views/Feature/Navigation/Pagination.cshtml", new PaginationViewModel
-       {
-           CurrentPage = Model.Page,
-           TotalPages = Model.TotalPages
-       })
+    {
+        CurrentPage = Model.Page,
+        TotalPages = Model.TotalPages
+    })
 </div>
