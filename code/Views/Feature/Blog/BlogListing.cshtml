@@ -5,7 +5,6 @@
 @using Sitecore.Foundation.Alerts.Models
 @using Sitecore.Foundation.Alerts.Extensions
 @using Sitecore.Foundation.Indexing.Search.Models
-@using Sitecore.Feature.Navigation.ViewModels
 @using System.Linq
 
 @inherits GlassView<SearchResponse<IBlogArticle>>
@@ -71,9 +70,20 @@
 
 
     </div>
-    @Html.Partial("~/Views/Feature/Navigation/Pagination.cshtml", new PaginationViewModel
-    {
-        CurrentPage = Model.Page,
-        TotalPages = Model.TotalPages
-    })
+    <ul>
+        @foreach (var page in Enumerable.Range(1, Model.TotalPages))
+        {
+            var isCurrent = page == Model.Page;
+            <li class="@(isCurrent ? "current" : string.Empty)">
+                @if (!isCurrent)
+                {
+                    <a href="?page=@page">@page</a>
+                }
+                else
+                {
+                    <span>@page</span>
+                }
+            </li>
+        }
+    </ul>
 </div>

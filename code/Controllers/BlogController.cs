@@ -22,11 +22,12 @@ namespace Sitecore.Feature.Blog.Controllers
             this.tagSearchService = tagSearchService;
         }
 
-        public ActionResult BlogListing()
+        public ActionResult BlogListing(int? page)
         {
             var request = new BlogArticleSearchRequest()
             {
                 RootPath = Context.Site.RootPath,
+                Page = page ?? 1,
                 PageSize = 10 // hard code to 10 for now
             };
 
