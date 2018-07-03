@@ -27,5 +27,23 @@ namespace Sitecore.Feature.Blog
             public const string ID_String = "{E81141E2-8ED0-4072-94A8-768D256DA4FC}";
             public static readonly ID ID = new ID(ID_String);
         }
+
+        public struct ArticleTheme
+        {
+            public const string ID_String = "{8C34724C-B08F-4B16-9036-4323F94FBED5}";
+            public static readonly ID ID = new ID(ID_String);
+
+            public struct Fields
+            {
+                public const string ArticleType_String = "{2B02516F-74FD-419E-8809-656662A06609}";
+                public static readonly ID ArticleType = new ID(ID_String);
+            }
+        }
+
+        public struct ArticleType
+        {
+            public const string ID_String = "{56F518DD-D3B1-4D00-9E41-60F27D71393C}";
+            public static readonly ID ID = new ID(ID_String);
+        }
     }
 }

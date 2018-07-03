@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Models\IBlogArticle.cs" />
+    <Compile Include="Models\IArticleTheme.cs" />
+    <Compile Include="Models\IArticleType.cs" />
     <Compile Include="Models\IBlogAuthor.cs" />
     <Compile Include="Services\BlogArticleSearchRequest.cs" />
     <Compile Include="Services\BlogArticleSearchRequestSortType.cs" />

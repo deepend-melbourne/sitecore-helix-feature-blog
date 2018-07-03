@@ -34,38 +34,33 @@
 
 
         @foreach (var blog in Model.Results)
+    {
+        if (blog == null)
         {
-            if (blog == null)
-            {
-                continue;
-            }
-
-            <div class="cell small-12 medium-6">
-                <div class="margin-top--default margin-bottom--default">
-                    <div class="news-tile">
-                        <a href="@blog.Url">
-                            <div class="news-tile__image" style="background-image: url(@(blog.BlogImage?.Src));">
-                            </div>
-                            <div class="news-tile__content">
-                                <p class="news-tile__date">
-                                    @blog.BlogDate.ToString("MMMM dd, yyyy")
-                                </p>
-                                <p class="news-tile__title">
-                                    @blog.BlogTitle
-                                </p>
-                                <p class="news-tile__description">
-                                    @blog.BlogIntroduction
-                                </p>
-                                <p class="news-tile__more">
-                                    Read more
-                                </p><p>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            continue;
         }
+        <div class=d-respond>
+            <section class="box">
+                <header>
+                    <div class="box__tab-tiny"></div>
+                    <div class="box__header">
+                        <p class="box__header__sup">
+                            Story
+                        </p>
+                        <h2 class="h6 box-module__title mb0">@blog.BlogTitle</h2>
+                    </div>
+                </header>
+                <div class="box__body">
+                    <p>@blog.BlogIntroduction</p>
+                    <p class="mb0">
+                        <a href="@blog.Url" class="button button-transparent" id="">
+                            <i class="icon icon-chevron-right "></i>        <span class="button__text">Read more</span>
+                        </a>
+                    </p>
+                </div>
+            </section>
+        </div>
+}
 
 
 
