@@ -12,5 +12,8 @@ namespace Sitecore.Feature.Blog.Services
 
         [IndexField("tags")]
         public List<string> Tags { get; set; }
+
+        [IndexField("article_type")]
+        public string ArticleType { get; set; }
     }
 }
