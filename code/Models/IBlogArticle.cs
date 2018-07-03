@@ -9,10 +9,8 @@ using Sitecore.Foundation.Tags.Model;
 namespace Sitecore.Feature.Blog.Models
 {
     [SitecoreType(AutoMap = true, TemplateId = Templates.BlogArticle.ID_String)]
-    public interface IBlogArticle : IBaseItem
+    public interface IBlogArticle : IBaseItem, IArticleTheme
     {
-        IArticleType ArticleType { get; set; }
-
         DateTime BlogDate { get; set; }
 
         string BlogTitle { get; set; }

@@ -34,12 +34,15 @@
 
 
         @foreach (var blog in Model.Results)
-    {
-        if (blog == null)
         {
-            continue;
-        }
-        <div class=d-respond>
+            if (blog == null)
+            {
+                continue;
+            }
+
+            //TODO: need to right class for this;
+            var themeClass = blog.ArticleType?.Name == "Blog" ? "d-family" : "d-early";
+        <div class="@themeClass">
             <section class="box">
                 <header>
                     <div class="box__tab-tiny"></div>

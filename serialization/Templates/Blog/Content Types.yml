@@ -1,8 +1,8 @@
 ﻿---
-ID: "0311d80b-f147-4db9-8a74-8a3ca5210288"
-Parent: "256655ec-8f3a-45b5-ad90-b63bc25b8067"
-Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
-Path: /sitecore/system/Settings/Feature/Blog
+ID: "0308b3c6-59c9-4581-bb1b-ca49aac189e1"
+Parent: "44b629c1-5c6f-4cd2-ae3b-235660ba419e"
+Template: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
+Path: /sitecore/templates/Feature/Blog/Content Types
 DB: master
 Languages:
 - Language: en
@@ -11,7 +11,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20180319T031245Z
+      Value: 20180703T003900Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

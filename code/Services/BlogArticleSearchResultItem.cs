@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sitecore.ContentSearch;
+using Sitecore.Data;
 using Sitecore.Foundation.Indexing.Models;
 
 namespace Sitecore.Feature.Blog.Services
@@ -14,6 +15,6 @@ namespace Sitecore.Feature.Blog.Services
         public List<string> Tags { get; set; }
 
         [IndexField("article_type")]
-        public string ArticleType { get; set; }
+        public ID ArticleType { get; set; }
     }
 }
