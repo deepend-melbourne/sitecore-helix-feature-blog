@@ -28,10 +28,8 @@
     return;
 }
 
-<div class="grid-container">
-
-
-    <div class="grid-x">
+<div class="latest-news">
+    <div class="grid-x grid-padding-x">
 
         @foreach (var blog in Model.Results)
         {
@@ -40,29 +38,7 @@
                 continue;
             }
 
-            //TODO: need to right class for this;
-            var themeClass = blog.ArticleType?.Name == "Blog" ? "d-family" : "d-early";
-            <div class="col small-12 large-4 @themeClass">
-                <section class="box">
-                    <header>
-                        <div class="box__tab-tiny"></div>
-                        <div class="box__header">
-                            <p class="box__header__sup">
-                                @(blog.ArticleType?.Name)
-                            </p>
-                            <h2 class="h6 box-module__title mb0">@blog.BlogTitle</h2>
-                        </div>
-                    </header>
-                    <div class="box__body">
-                        <p>@blog.BlogIntroduction</p>
-                        <p class="mb0">
-                            <a href="@blog.Url" class="button button-transparent" id="">
-                                <i class="icon icon-chevron-right "></i>        <span class="button__text">Read more</span>
-                            </a>
-                        </p>
-                    </div>
-                </section>
-            </div>
+          @Html.Partial("~/Views/Feature/Blog/BlogListing.cshtml", blog)
         }
     </div>
     <ul class="pagination">
