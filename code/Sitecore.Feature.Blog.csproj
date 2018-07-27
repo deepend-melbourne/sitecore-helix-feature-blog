@@ -138,6 +138,10 @@
       <Project>{07321ADF-4772-4D1A-B515-771A4773B87B}</Project>
       <Name>Sitecore.Foundation.Tags</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Blocks\code\Sitecore.Feature.Blocks.csproj">
+      <Project>{F133D299-D0B2-40E8-B36C-446328AB1D3B}</Project>
+      <Name>Sitecore.Feature.Blocks</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\Deepend.build.dotnet.props" Condition="Exists('$(SolutionDir)\Deepend.build.dotnet.props')" />

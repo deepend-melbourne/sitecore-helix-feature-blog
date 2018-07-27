@@ -1,0 +1,38 @@
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sitecore.Feature.Blog.ViewModels.IBlogContent>
+
+<div class="page-intro overlap" style="background-color: @Model.BackgroundColour">
+    <div class="grid-x">
+        <div class="cell small-12 medium-6 page-intro__text">
+            <div class="grid-x grid-padding-x">
+                <div class="cell medium-12 large-10">
+                    <div class="page-intro__breadcrumb">
+                        @Html.Sitecore().Placeholder("breadcrumb")
+                    </div>
+                    <h1 class="page-intro__title h2">
+                        @Editable(x => x.Title)
+                    </h1>
+                    <div class="page-intro__content">
+                        <p>@Editable(x => x.BlogIntroduction)</p>
+                    </div>
+                    <div class="page-intro__date">
+                        @Editable(u => u.BlogDate, x => x.BlogDate.ToString("MMM d, yyyy"))
+                    </div>
+                    @if (Model.Tags != null && Model.Tags.Any())
+                    {
+                        <div class="page-intro__tags">
+                            <div class="tag-list">
+                                <p class="tag-list__description">Article tagged with:</p>
+                                <ul class="tag-list__tags">
+                                    @foreach (var tag in Model.Tags)
+                                    {
+                                        <li class="tag-list__tag"><a href="/news?tags=@tag.Name">@tag.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
