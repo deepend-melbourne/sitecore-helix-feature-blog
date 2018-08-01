@@ -28,13 +28,30 @@ namespace Sitecore.Feature.Blog.Controllers
             {
                 RootPath = Context.Site.RootPath,
                 Page = page ?? 1,
-                PageSize = 10 // hard code to 10 for now
+                PageSize = 10, // hard code to 10 for now
+                SortType = BlogArticleSearchRequestSortType.BlogDateDescending
             };
 
             ApplyUrlQueryTagsToBlogSearchRequest(request);
 
             var searchResult = blogArticleService.Search(request);
             return View("~/Views/Feature/Blog/BlogListing.cshtml", searchResult);
+        }
+
+        public ActionResult LastUpdatedDate()
+        {
+            var request = new BlogArticleSearchRequest()
+            {
+                RootPath = Context.Site.RootPath,
+                Page = 1,
+                PageSize = 1, // hard code to 10 for now
+                SortType = BlogArticleSearchRequestSortType.BlogDateDescending
+            };
+
+            var searchResult = blogArticleService.Search(request);
+            var lastUpdated = searchResult.Results.FirstOrDefault()?.BlogDate;
+
+            return View("~/Views/Feature/Blog/_LastUpdated.cshtml", lastUpdated);
         }
 
         public ActionResult BlogAuthor()

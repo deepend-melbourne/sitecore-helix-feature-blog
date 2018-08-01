@@ -1,0 +1,7 @@
+@using System;
+@model DateTime?
+
+@if (Model.HasValue)
+{
+    <p>Last updated @Model.Value.ToString("MMM dd, yyyy")</p>
+}

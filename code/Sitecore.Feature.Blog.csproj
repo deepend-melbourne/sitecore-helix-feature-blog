@@ -63,6 +63,7 @@
     <Content Include="Views\**\*.cshtml" />
     <Content Include="App_Config\Include\Feature\Blog\Sitecore.Feature.Blog.Pipelines.config" />
     <Content Include="App_Config\Include\Feature\Blog\Sitecore.Feature.Blog.Serialization.config" />
+    <None Include="Views\Feature\Blog\_LastUpdated.cshtml" />
     <None Include="Views\Feature\Blog\_BoxBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>

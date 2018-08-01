@@ -38,23 +38,42 @@
                 continue;
             }
 
-          @Html.Partial("~/Views/Feature/Blog/_BoxBlog.cshtml", blog)
+            @Html.Partial("~/Views/Feature/Blog/_BoxBlog.cshtml", blog)
         }
     </div>
-    <ul class="pagination">
-        @foreach (var page in Enumerable.Range(1, Model.TotalPages))
+    @{
+
+        int? previousPage = Model.Page - 1;
+        int? nextPage = Model.Page + 1;
+
+        if (previousPage < 1)
         {
-            var isCurrent = page == Model.Page;
-            <li class="@(isCurrent ? "current" : string.Empty)">
-                @if (!isCurrent)
-                {
-                    <a href="?page=@page">@page</a>
-                }
-                else
-                {
-                    <span>@page</span>
-                }
-            </li>
+            previousPage = (int?)null; ;
         }
-    </ul>
+
+        if (nextPage >= Model.TotalPages)
+        {
+            nextPage = (int?)null;
+        }
+    }
+    <div class="pagination">
+        <ul>
+            @if (previousPage.HasValue)
+            {
+                <li>
+                    <a href="?page=@previousPage.Value" title="Previous page">
+                        <i class="icon icon-chevron-left"></i>
+                    </a>
+                </li>
+            }
+            @if (nextPage.HasValue)
+            {
+                <li>
+                    <a href="?page=@nextPage.Value" title="Next page">
+                        <i class="icon icon-chevron-right"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
 </div>

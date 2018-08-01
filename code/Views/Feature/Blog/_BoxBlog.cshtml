@@ -3,7 +3,7 @@
 @using Sitecore.Feature.Blog.Models
 @inherits GlassView<IBlogArticle>
 @{
-    var themeClass = Model.ArticleType?.Name == "Blog" ? "d-blog" : "d-article";
+    var themeClass = Model.ArticleType?.Name == "Blog" ? "c-blog" : "c-news";
 }
 <div class="cell small-12 large-4">
     <div class="domain @themeClass">
