@@ -1,6 +1,8 @@
 @using Glass.Mapper.Sc.Web.Mvc
 @using Sitecore.Foundation.SitecoreExtensions.Helpers
 @using Sitecore.Feature.Blog.Models
+@using Sitecore.Foundation.SitecoreExtensions.Extensions
+
 @inherits GlassView<IBlogArticle>
 @{
     var themeClass = Model.ArticleType?.Name == "Blog" ? "c-blog" : "c-news";
@@ -21,7 +23,7 @@
                 </div>
             </header>
             <div class="box__body">
-                <p>@Model.BlogIntroduction</p>
+                <p>@Model.BlogIntroduction.Truncate(130)</p>
             </div>
             <footer class="box__footer">
                 <div class="dual-btn">
