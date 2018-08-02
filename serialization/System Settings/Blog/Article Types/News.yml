@@ -1,0 +1,18 @@
+﻿---
+ID: "a4f8053f-f59b-48c8-ad2d-930f2df4a72e"
+Parent: "c7decee5-b078-4ce2-9fb0-0ba9576a28da"
+Template: "56f518dd-d3b1-4d00-9e41-60f27d71393c"
+Path: /sitecore/system/Settings/Feature/Blog/Article Types/News
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180703T004003Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
