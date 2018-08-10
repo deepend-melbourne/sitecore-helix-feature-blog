@@ -16,5 +16,8 @@ namespace Sitecore.Feature.Blog.Services
 
         [IndexField("article_type")]
         public ID ArticleType { get; set; }
+
+        [IndexField("blog_category")]
+        public string BlogCategory { get; set; }
     }
 }

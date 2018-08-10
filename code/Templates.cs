@@ -36,7 +36,7 @@ namespace Sitecore.Feature.Blog
             public struct Fields
             {
                 public const string ArticleType_String = "{2B02516F-74FD-419E-8809-656662A06609}";
-                public static readonly ID ArticleType = new ID(ID_String);
+                public static readonly ID ArticleType = new ID(ArticleType_String);
             }
         }
 
@@ -44,6 +44,24 @@ namespace Sitecore.Feature.Blog
         {
             public const string ID_String = "{56F518DD-D3B1-4D00-9E41-60F27D71393C}";
             public static readonly ID ID = new ID(ID_String);
+        }
+
+        public struct ArticleCategory
+        {
+            public const string ID_String = "{B4E6D656-567B-4951-ABED-5E381383C2A4}";
+            public static readonly ID ID = new ID(ID_String);
+        }
+
+        public struct BlogCategory
+        {
+            public const string ID_String = "{B746D5EF-A038-414E-A772-B63C3EE88EF9}";
+            public static readonly ID ID = new ID(ID_String);
+
+            public struct Fields
+            {
+                public const string BlogCategory_String = "{EA9C8165-2532-4F6A-B066-530027CB66D6}";
+                public static readonly ID BlogCategory = new ID(BlogCategory_String);
+            }
         }
     }
 }

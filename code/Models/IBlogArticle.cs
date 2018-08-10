@@ -8,7 +8,7 @@ using Sitecore.Foundation.Tags.Model;
 namespace Sitecore.Feature.Blog.Models
 {
     [SitecoreType(AutoMap = true, TemplateId = Templates.BlogArticle.ID_String)]
-    public interface IBlogArticle : IBaseItem, IArticleTheme
+    public interface IBlogArticle : IBaseItem, IArticleTheme, IBlogCategory
     {
         DateTime BlogDate { get; set; }
 

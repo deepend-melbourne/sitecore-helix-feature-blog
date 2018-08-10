@@ -49,6 +49,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Models\IArticleCategory.cs" />
+    <Compile Include="Models\IBlogCategory.cs" />
     <Compile Include="Models\IBlogArticle.cs" />
     <Compile Include="Models\IArticleTheme.cs" />
     <Compile Include="Models\IArticleType.cs" />
