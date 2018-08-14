@@ -4,7 +4,7 @@ using Sitecore.Foundation.Models.Models.Interfaces;
 
 namespace Sitecore.Feature.Blog.ViewModels
 {
-    public interface IBlogContent : IBaseItem, IBlogArticle, IPageBanner, IBannerColour
+    public interface IBlogContent : IBaseItem, IBlogArticle, IPageBanner, IPageScheme
     {
     }
 }
