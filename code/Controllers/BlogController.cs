@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using Glass.Mapper.Sc.Web.Mvc;
@@ -70,6 +71,13 @@ namespace Sitecore.Feature.Blog.Controllers
             }
 
             return View("~/Views/Feature/Blog/BlogAuthor.cshtml", author);
+        }
+
+        public ActionResult ArticleBox(Guid id)
+        {
+            var item = SitecoreContext.GetItem<IBlogArticle>(id);
+
+            return View("~/Views/Feature/Blog/_BoxBlog.cshtml", item);
         }
 
         void ApplyUrlQueryTagsToBlogSearchRequest(BlogArticleSearchRequest request)
