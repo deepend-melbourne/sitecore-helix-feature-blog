@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Models\IArticleCategory.cs" />
+    <Compile Include="Models\IRenderingParameter_LastestNews.cs" />
     <Compile Include="Models\IBlogCategory.cs" />
     <Compile Include="Models\IBlogArticle.cs" />
     <Compile Include="Models\IArticleTheme.cs" />
@@ -65,6 +66,7 @@
     <Content Include="Views\**\*.cshtml" />
     <Content Include="App_Config\Include\Feature\Blog\Sitecore.Feature.Blog.Pipelines.config" />
     <Content Include="App_Config\Include\Feature\Blog\Sitecore.Feature.Blog.Serialization.config" />
+    <None Include="Views\Feature\Blog\LatestNews.cshtml" />
     <None Include="Views\Feature\Blog\_LastUpdated.cshtml" />
     <None Include="Views\Feature\Blog\_BoxBlog.cshtml" />
   </ItemGroup>

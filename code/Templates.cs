@@ -63,5 +63,17 @@ namespace Sitecore.Feature.Blog
                 public static readonly ID BlogCategory = new ID(BlogCategory_String);
             }
         }
+
+    public struct RenderingParameter_LatestNews
+        {
+        public const string ID_String = "{DCD1B120-34BA-4E53-979A-36576D315625}";
+        public static readonly ID ID = new ID(ID_String);
+
+        public struct Fields
+        {
+            public const string ViewAllNewsLink_String = "{9832A0E3-852A-48C3-AB06-B52EBD77265C}";
+            public static readonly ID ViewAllNewsLink = new ID(ViewAllNewsLink_String);
+        }
     }
+}
 }

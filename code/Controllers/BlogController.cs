@@ -39,6 +39,20 @@ namespace Sitecore.Feature.Blog.Controllers
             return View("~/Views/Feature/Blog/BlogListing.cshtml", searchResult);
         }
 
+        public ActionResult LatestNews()
+        {
+            var request = new BlogArticleSearchRequest()
+            {
+                RootPath = Context.Site.RootPath,
+                Page = 1,
+                PageSize = 3, // hard code to 10 for now
+                SortType = BlogArticleSearchRequestSortType.BlogDateDescending
+            };
+
+            var searchResult = blogArticleService.Search(request);
+            return View("~/Views/Feature/Blog/LatestNews.cshtml", searchResult);
+        }
+
         public ActionResult LastUpdatedDate()
         {
             var request = new BlogArticleSearchRequest()

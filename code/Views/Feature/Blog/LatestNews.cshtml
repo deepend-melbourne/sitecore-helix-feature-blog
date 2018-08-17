@@ -1,0 +1,36 @@
+@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Feature.Blog.Models
+@using Sitecore.Foundation.Dictionary.Repositories
+@using Sitecore.Foundation.Indexing.Search.Models
+@inherits GlassView<SearchResponse<IBlogArticle>>
+@{
+    var parameters = GetRenderingParameters<IRenderingParameter_LastestNews>();
+}
+
+
+<section class="content-section">
+    <h2 class="h4 content-section__title">@DictionaryPhraseRepository.Current.Get("/Blog/Latest News", string.Empty)</h2>
+    <div class="latest-news">
+        @if (Model.Results.Any())
+        {
+            <div class="grid-x grid-padding-x">
+                @foreach (var article in Model.Results)
+                {
+                    <div class="cell small-12 large-4">
+                        @Html.Partial("~/Views/Feature/Blog/_BoxBlog.cshtml", article)
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    @if (parameters != null && parameters.ViewAllNewsLink != null)
+    {
+        <p class="content-section__more">
+            <a class="arrow-link"
+               href="@parameters.ViewAllNewsLink.Url" title="@parameters.ViewAllNewsLink.Text">
+                <i class="icon icon-chevron-right"></i>
+                <span>@DictionaryPhraseRepository.Current.Get("/Blog/View all news", string.Empty)</span>
+            </a>
+        </p>
+    }
+</section>
