@@ -16,9 +16,7 @@
             <div class="grid-x grid-padding-x">
                 @foreach (var article in Model.Results)
                 {
-                    <div class="cell small-12 large-4">
-                        @Html.Partial("~/Views/Feature/Blog/_BoxBlog.cshtml", article)
-                    </div>
+                    @Html.Partial("~/Views/Feature/Blog/_BoxBlog.cshtml", article)
                 }
             </div>
         }
